@@ -55,7 +55,6 @@
 
 <script>
 const url = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'http://localhost:9000' : 'http://doomtyper-backend.herokuapp.com'
-console.log(url)
 export default {
   name: 'SignIn',
   props: {
@@ -92,6 +91,7 @@ export default {
         body: raw,
         redirect: 'follow'
       };
+      console.log(url)
       fetch(url+"/login", requestOptions)
         .then(response => {
           if(!response.ok){
@@ -133,7 +133,6 @@ export default {
           body: raw,
           redirect: 'follow'
         };
-
         fetch(url + "/users", requestOptions)
           .then(response => {
             if(!response.ok){
