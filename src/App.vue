@@ -103,7 +103,7 @@ import Game from './gameComponents/Game.vue'
 import { round, flatten } from 'lodash'
 import { Player } from 'tone'
 import gameMusicURL from './assets/inGameMusic.mp3'
-const url = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'http://localhost:9000' : 'http://doomtyper-backend.herokuapp.com'
+const url = 'https://doomtyper-backend.herokuapp.com'
 
 
 export default {

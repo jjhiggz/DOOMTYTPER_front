@@ -54,7 +54,7 @@
 
 
 <script>
-const url = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'http://localhost:9000' : 'http://doomtyper-backend.herokuapp.com'
+const url = 'http://doomtyper-backend.herokuapp.com'
 export default {
   name: 'SignIn',
   props: {
