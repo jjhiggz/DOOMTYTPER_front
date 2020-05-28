@@ -54,7 +54,7 @@
 
 
 <script>
-const url = 'http://doomtyper-backend.herokuapp.com'
+const url = 'https://doomtyper-backend.herokuapp.com'
 export default {
   name: 'SignIn',
   props: {
