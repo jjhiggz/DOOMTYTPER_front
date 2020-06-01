@@ -4,6 +4,9 @@
 
   Welcome to DOOMTYPER, the most brutal way to improve your typing skills. I built this project for my capstone project graduating from flatiron university, but now that people are actually playing it I will work to improve the functionality of the website, the security of game scores, adding a survival mode, and more. I will use this game as an oppurtunity to learn new skills from security features, to vuex and vue router.  If you would like to be involved as a developer please reach out. 
 
+  The Game can be found at https://doomtyper.web.app/ 
+  Here is a demo of the game https://www.youtube.com/watch?v=X89GhBsxseE 
+
 ## Project setup
   If you plan on working with this reaper. First clone the repository into your repo, then type in 
 ```
@@ -51,4 +54,4 @@ npm run serve
 
 ### YourStatsChoices
   Currently this component isn't being used, there is still alot of development to be done in order to get the YourStats Component fully functioning
-  
+
