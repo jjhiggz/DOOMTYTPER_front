@@ -70,7 +70,7 @@ export default {
         .catch(error => console.log('error', error));
     },
     sortScores(scores){
-      scores = orderBy(JSON.parse(scores), ['accuracy','wpm']).reverse() 
+      scores = orderBy(JSON.parse(scores), ['wpm','accuracy']).reverse().filter(score => score.wpm !== null )
       if( scores.length > 20 ){
         this.scores = scores.slice( 0, 20 )
       }
