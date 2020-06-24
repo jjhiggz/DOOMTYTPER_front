@@ -2,13 +2,21 @@
 
 ## Intro
 
-  Welcome to DOOMTYPER, the most brutal way to improve your typing skills. I built this project for my capstone project graduating from flatiron university, but now that people are actually playing it I will work to improve the functionality of the website, the security of game scores, adding a survival mode, and more. I will use this game as an oppurtunity to learn new skills from security features, to vuex and vue router.  If you would like to be involved as a developer please reach out. 
+Welcome to DOOMTYPER, the most brutal way to improve your typing skills.
 
-  The Game can be found at https://doomtyper.web.app/ 
-  Here is a demo of the game https://www.youtube.com/watch?v=X89GhBsxseE 
+## Demo
+  
+
+I built this as my capstone project for Flatiron School's Denver software development program. I will use this game as an oppurtunity to learn new skills from security features, to vuex and vue router.  If you would like to be involved as a developer please reach out. 
+
+## Link to Game
+The Game can be found at https://doomtyper.web.app/ 
+
+## Trailer for The Game
+Here is a demo of the game https://www.youtube.com/watch?v=X89GhBsxseE 
 
 ## Project setup
-  If you plan on working with this reaper. First clone the repository into your repo, then type in 
+  If you plan on working with this code. First clone the repository into your directory, then type in 
 ```
 npm install
 ```
