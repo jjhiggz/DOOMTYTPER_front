@@ -4,7 +4,7 @@
 
 Welcome to DOOMTYPER, the most brutal way to improve your typing skills.
 
-## Demo
+![gif title](https://github.com/jjhiggz/DOOMTYTPER_front/blob/master/src/assets/DoomtyperDemo.gif?raw=true)
   
 
 I built this as my capstone project for Flatiron School's Denver software development program. I will use this game as an oppurtunity to learn new skills from security features, to vuex and vue router.  If you would like to be involved as a developer please reach out. 
