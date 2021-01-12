@@ -46,6 +46,8 @@
       >
       <input type="submit" value="submit">
       <p>{{this.signupErrorMessage}}</p>
+      <p v-if="!passMatch">passwords don't match</p>
+      <p v-if="!passwordValid">Password Not Long Enough</p>
     </form>
   </div>
 </template>
@@ -60,24 +62,21 @@ export default {
     render:Boolean,
   },
   computed: {
-    usernameLength(){ return this.username.length },
-    passwordLength(){ return this.signupPassword.length },
+    usernameLength(){ return this.username.length},
+    passwordLength(){ return this.signupPassword.length},
     passwordValid(){
-      return this.passwordLength > 8 ? true : false
+      return this.passwordLength > 8
+      ? true
+      : false
     },
-    passwordMatch(){
+    passMatch(){
       return this.signupPassword === this.signupConfirmPassword
     }
   },
   methods: {
-    resetInputs(){
-      this.signupPassword = ''
-      this.signupConfirmPassword = ''
-    },
     noteTimeOut(){
       setTimeout(() => {
         this.loginErrorMessage = ""
-        this.signupErrorMessage = ""
       }, 2000)
     },
     login(){
@@ -92,7 +91,7 @@ export default {
           }
         }
       );
-      let requestOptions = {
+      var requestOptions = {
         method: 'POST',
         headers: myHeaders,
         body: raw,
@@ -103,17 +102,16 @@ export default {
         .then(response => {
           if(!response.ok){
             throw Error(response.statusText)}
-            return response.text()
-          })
+          return response.text()})
         .then(result => {
           const parsedResult = JSON.parse(result)
-            if( Object.keys(parsedResult).includes('token') ) {
-              this.$emit( "updateToken", result, this.username )
-              localStorage.setItem( 'token', result )
-              localStorage.setItem( 'username', this.username )
+            if(Object.keys(parsedResult).includes('token')) {
+              this.$emit("updateToken",result, this.username)
+              localStorage.setItem('token', result )
+              localStorage.setItem('username', this.username)
             }
             else{
-              this.loginErrorMessage = JSON.parse( result ).error
+              this.loginErrorMessage = JSON.parse(result).error
               this.noteTimeOut()
               this.username = ''
             }
@@ -121,49 +119,51 @@ export default {
         .catch(error => console.log('error', error));
     },
     signUp(){
-      if( this.passwordMatch && this.passwordValid ){
+      if(this.passMatch){
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Content-Type", "application/json");
         
-        let requestOptions = {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(
+        var raw = JSON.stringify(
+          {"user":
             {
-              "user": {
-                "password":this.signupPassword,
-                "username":this.signupUsername
-              }
+              "password":this.signupPassword,
+              "username":this.signupUsername
             }
-          ),
+          }
+        );
+        
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
           redirect: 'follow'
         };
-
         fetch(url + "/users", requestOptions)
-          .then( response => {
-            if( !response.ok ) throw Error( response.statusText )
-              return response.text()
+          .then(response => {
+            if(!response.ok){
+              throw Error(response.statusText)}
+            return response.text()
           })
-          .then( result => {
+          .then(result => {
             const parsedResult = JSON.parse(result)
-            if( Object.keys( parsedResult ).includes( 'id' ) && parsedResult.id !== null ){
+            if(Object.keys(parsedResult).includes('id') && parsedResult.id !== null) {
               this.username = this.signupUsername
               this.password = this.signupPassword
               this.login()
-            } else {
-              this.loginErrorMessage = JSON.parse( result ).error
+            }
+            else{
+              this.loginErrorMessage = JSON.parse(result).error
               this.username = ''
             }
-          })
-          .catch(error => console.log('error', error));
-      } else {
-          this.resetInputs()
-          if(this.passwordMatch){
-            this.signupErrorMessage = "Your passwords do not match"
-          } else if(this.passwordValid){
-            this.signupErrorMessage = "Your password needs at least 8 characters"
           }
-          this.noteTimeOut()
+          )
+          .catch(error => console.log('error', error));
+      }
+      else{
+        this.signupPassword = ''
+        this.signupConfirmPassword = ''
       }
     }
   },
@@ -214,12 +214,10 @@ export default {
     align-items: center;
     justify-content: center;
   }
-
   h2{
     padding:10px;
     color:white;
   }
-
   input{
     margin:10px;
   }

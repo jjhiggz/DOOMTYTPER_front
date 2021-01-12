@@ -10,13 +10,21 @@
           type='text'
           :key='word.id'
           v-for="word in completeWords"
-          :class="[word.correct ? 'correct test-input' : 'incorrect test-input']"
+          :class=" [ word.correct 
+            ? 'correct test-input' 
+            : 'incorrect test-input'
+          ] "
           >
           {{word.word}}
         </span>
         <!-- if time alots, you can use indexFirstIncorrect Character to tell when the word is wrong but it creates a bug if the very first letter is wrong, it won't pick up on that -->
         <span 
-          :class="[ isInputCorrect ? 'correct test-input' : 'incorrect test-input']"
+          :class="[ isInputCorrect
+          ?
+            'correct test-input'
+          : 
+          'incorrect test-input']"
+          
           :key="this.input"
         >
           {{input}}
